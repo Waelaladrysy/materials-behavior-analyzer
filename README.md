@@ -1,47 +1,65 @@
 # Materials Behavior Analyzer
 
-A machine learning project to predict material failure based on mechanical properties — built at the intersection of Mechatronics Engineering and AI.
+An educational machine-learning project combining mechatronics and AI to classify material specimens using mechanical properties. A Streamlit dashboard runs predictions from a Random Forest classifier.
 
-## 🎯 Goal
-Use real or simulated lab data to train a classifier that predicts whether a material specimen will fail under given load conditions.
+## Scope and limitations
 
-## 🛠️ Tech Stack
-- Python
-- Pandas (data processing)
-- Scikit-learn (ML models)
-- Streamlit (interactive dashboard)
+The included dataset contains 30 labeled examples. Its source is not documented, and the training script fits all rows without a held-out evaluation. No accuracy or confidence score is reported. Predictions are a learning demonstration and are not validated for engineering safety decisions.
 
-## 📊 Sample Input Features
-- Material type (steel, aluminum, copper)
-- Yield strength (MPa)
-- Tensile strength (MPa)
-- Elongation (%)
-- Test temperature (°C)
-- Test type (Tensile/Compression)
-- Heat treated? (Yes/No)
+## Inputs and output
 
-## 🖥️ Output
-- Prediction: **Safe** or **Likely to Fail**
-- Confidence score (optional)
+Inputs: material (Steel, Aluminum, Copper), yield strength (MPa), tensile strength (MPa), elongation (%), temperature (°C), test type (Tensile or Compression), and heat treatment (Yes or No).
 
-## 🚀 How to Run
-1. Clone this repo  
-2. Install requirements: `pip install -r requirements.txt`  
-3. Run the dashboard: `streamlit run app.py`
+The target is `Will_Fail`: 1 indicates likely failure and 0 indicates the non-failure class. The dashboard displays the predicted class; it does not calculate a confidence score or accept applied load as an input.
 
-## 📂 Project Structure
-material-failure-predictor/
-├── material_data.csv # Training data
-├── train_model.py # Model training script
-├── app.py # Streamlit web app
-├── requirements.txt # Dependencies
-├── material_failure_model.pkl # Trained model
-├── label_encoders.pkl # Text encoders
-└── README.md # This file
+## Setup and run
 
+Use Python 3.10 or later. Run commands from the project directory.
 
+```bash
+git clone https://github.com/Waelaladrysy/materials-behavior-analyzer-.git
+cd materials-behavior-analyzer-
+python -m venv .venv
+```
 
-## 👤 Developer
-Wael Noman  
-Mechatronics Engineer & AI Enthusiast  
-[LinkedIn](https://www.linkedin.com/in/wail-noman)
+Activate the environment:
+
+- Windows PowerShell: `.venv\Scripts\Activate.ps1`
+- macOS/Linux: `source .venv/bin/activate`
+
+```bash
+python -m pip install -r requirements.txt
+python train_model.py
+python -m streamlit run app.py
+```
+
+Training regenerates both model files with the installed library versions before the dashboard loads them. Retrain after changing the data or upgrading scikit-learn.
+
+## Project structure
+
+```text
+.
+├── app.py                      # Streamlit dashboard
+├── train_model.py              # Training and artifact generation
+├── material_data.csv           # 30 labeled examples
+├── requirements.txt            # Python dependencies
+├── material_failure_model.pkl  # Serialized classifier
+├── label_encoders.pkl          # Categorical encoders
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+## Technologies
+
+Python, pandas, NumPy, scikit-learn, joblib, and Streamlit.
+
+## Developer
+
+Wael Noman — Mechatronics Engineering graduate and M.Sc. student in Artificial Intelligence Engineering.
+
+[GitHub profile](https://github.com/Waelaladrysy) · [LinkedIn](https://www.linkedin.com/in/wail-noman)
+
+## License
+
+[MIT](LICENSE)
