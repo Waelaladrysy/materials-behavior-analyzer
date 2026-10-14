@@ -17,8 +17,8 @@ The target is `Will_Fail`: 1 indicates likely failure and 0 indicates the non-fa
 Use Python 3.10 or later. Run commands from the project directory.
 
 ```bash
-git clone https://github.com/Waelaladrysy/materials-behavior-analyzer-.git
-cd materials-behavior-analyzer-
+git clone https://github.com/Waelaladrysy/materials-behavior-analyzer.git
+cd materials-behavior-analyzer
 python -m venv .venv
 ```
 
